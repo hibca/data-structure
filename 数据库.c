@@ -106,14 +106,14 @@ Status ListInsert(DuLinkList L, int i, ElemType e) {
 	DulinkList p, s;
 	if (i<1 || i>ListLength(L) + 1)			//i值不合法
 		return ERROR;
-	p = GetElemP(L, i - 1);					//在L中确定第i个元素前驱的位置指针p
-	if (!P)									//p=null，即第i个元素前驱不存在（设头结点为第1个元素的前驱）
+	p = GetElemP(L, i - 1);				//在L中确定第i个元素前驱的位置指针p
+	if (!P)						//p=null，即第i个元素前驱不存在（设头结点为第1个元素的前驱）
 		return ERROR;
 		s = (DulinkList)malloc(sizeof(DuLNode));
 		if (!s)
 			return OVERFLOW;
 		s->data = e;
-		s->prior = p;						//在第i-1个元素之后插入
+		s->prior = p;				//在第i-1个元素之后插入
 		s->next = p -> next;
 		p->next->prior = s;
 		p->next = s;
