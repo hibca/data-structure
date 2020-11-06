@@ -1,3 +1,4 @@
+//顺序表
 //顺序表插入操作
 bool InsertList(SqList &L,int ,ElemType e)
 {
