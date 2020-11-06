@@ -414,3 +414,49 @@ Bool GetTop(SqStack S, ElemType& x)
 	DeQueue（&Q，&x）出队，若队列Q未空，则将队头元素删除，并用x返回
 	GetHead（Q，&x）读取对头元素，若队列Q未空，则将对头元素赋值给x
 ***************************************************/
+/*链队列的基本算法*/
+//（1）构造空队列
+Status InitQueue(LinkQueue& Q)
+{
+	Q.front = Q.rear = (QElemPtr)malloc(sizeof(QNode));
+	if (!Q.front)
+		exit(overflow);
+	Q.front->next = NULL;
+	return ok;
+}
+//(2)销毁对列
+Status DestroyQueue(LinkQueue& Q)
+{
+	while (Q.front)
+	{
+		Q.rear = Q.front->next;
+		free(Q.front);
+		Q.front = Q.rear;
+	}
+	return ok;
+}
+//（3）插入元素
+Status EnQueue(LinkQueue& Q, QElemtype e)
+{
+	p = (QueuePtr)malloc(sizeof(QNode));
+	if (!p)
+		exit(OVERFLOW);
+	p->data = e;
+	p->next = NULL;
+	Q.rear->next = p;
+	Q.rear = p;
+	return ok;
+}
+//(4)删除对头元素
+Status DnQueue(LinkQueue& Q, QElemType& e)
+{
+	if (Q.front == Q.rear)
+		return ERROR;
+	p = Q.front->next;
+	e = p->data;
+	Q.front->next = p->next;
+	if (Q.rear == p)
+		Q.rear = Q.front;
+	free(p);
+	return ok;
+}
