@@ -489,3 +489,42 @@ Status DnQueue(LinkQueue& Q, QElemType& e)
 	队列用于多道作业处理，指令等寄存等。
 ------------------------------------------
 ******************************************/
+/*循环队列顺序存储注意事项*/
+//初始时：
+	Q.front = Q, rear = 0
+//队首指针进1：
+	Q.fron=(Q.front+1)%MaxSize
+//队尾指针进1：
+	Q.rear=(Q.rear+1)%MaxSize
+//队满条件：
+	(Q.rear+1)%MaxSize==Q.front
+//对空条件：
+	Q,front==Q,rear
+//队列中的元素个数：
+	(Q.rear-Q.front+MaxSize)%MaxSize
+
+//循环队列的操作 
+	//顺序存储入队
+	bool EnQueue(SqQueue* Q, QElem Type e)
+	{
+		//入队列
+		if ((Q->rear + 1) % MaxSize == Q->front)
+		{
+			return false;
+		}
+		Q->data[Q->rear] = e;
+		Q->rear = (Q->rear + 1) % MaxSize;
+		//rear向后移动一位若到最后则移动至数组头
+		return 1;
+	}
+	//顺序存储出队
+	bool DeQueue(SqQueue* Q, QElemType* e)
+	{
+		if (Q->rear == Q->front)
+		{
+			return false;
+		}
+		*e = Q->data[Q->front];
+		Q->front = (Q->front + 1) % MaxSize;
+		return 1;
+	}
