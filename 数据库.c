@@ -528,3 +528,27 @@ Status DnQueue(LinkQueue& Q, QElemType& e)
 		Q->front = (Q->front + 1) % MaxSize;
 		return 1;
 	}
+	//链式存储入队
+	void EnQueue(LinkQueue& Q, ElemType x)
+	{
+		s = (LinkNode*)malloc(sizeof(LinkNode));
+		s->data = x;
+		s->next = NULl;
+		Q->rear->next = s;
+		Q.rear = s;
+	}
+	//链式存储出栈
+	Bool DeQueue(LinkQueue& Q, ElemType& x)
+	{
+		if (Q.front == Q.rear)
+			return false;
+		p = Q.front->next;
+		x = p->data;
+		Q.front->next = p->next;
+		if (Q.rear == p)
+		{
+			Q.rear = Q.front;
+		}
+		free(p);
+		return true;
+	}
