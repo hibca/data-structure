@@ -59,7 +59,8 @@ int LocateElem(SqList L,ElemType)
 -----------------------------------------------------------------
 /*函数功能：在链表中插入元素
   输入：head链表头指针，p新元素插入位置，x新元素中的数据域内容
-  返回值：无*/
+  返回值：无
+*/
 void insert(Node *head,int p,int x)
 {
 	Node *tmp=head;	
