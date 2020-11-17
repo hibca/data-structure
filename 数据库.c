@@ -920,3 +920,23 @@ void PreOrderTraverse(BiTree T, LStack* S)
 		}
 	}
 }
+
+void MidORderTraverse(BiTree T, LStack* S)
+{
+	InitStack(S);
+	BiTree p = T;
+	while (p || !Empty(S))
+	{
+		if (p)
+		{
+			S->Stack[++S->top] = p;
+			p = p->LChild;
+		}
+		else
+		{
+			p = S->Stack[S->top--];//获取根结点
+			visit(p->data);
+			p = p->RChild;
+		}
+	}
+}
