@@ -940,3 +940,49 @@ void MidORderTraverse(BiTree T, LStack* S)
 		}
 	}
 }
+
+//后序遍历：
+void ReaOrderTraverse(BiTree T, LStack* S)
+{
+	InitStack(S);
+	BiTree p = T;
+	r = NULL;
+	while (p || !Empty(S))
+	{
+		if (p)
+		{
+			S->Stack[++S->top] = p;
+			p = p->LChild;
+		}
+		else
+		{
+			p = S->Stack[S->top];
+			if (p->Rchild && p->Rchild!r)
+				p = p->RChild;
+			else
+			{
+				--S->top;
+				printf("%c", p->data);
+				r = p;
+				p = NULL;
+			}
+		}
+	}
+}
+
+//二叉树层次遍历
+void LevelOrder(BiTree T)
+{
+	InitQueue(Q);
+	BiTree p;
+	EnQueue(Q, T);
+	while (!IsEmpty(Q))
+	{
+		DeQueue(Q, p);
+		visit(p);
+		if (p->lchild != NULL)
+			EnQueue(Q, p->lchild);
+		if (p->rchild != NULL)
+			EnQueue(Q, p->rchild);
+	}
+}
