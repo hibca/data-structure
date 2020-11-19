@@ -1063,6 +1063,22 @@ int Btdopth(B1Tree T)
 	int last = 0, level = 0;//last指向当前层的最右结点
 	BiTree Q[Maxsize];
 	//设置队列Q，元素是叉树结点指针，且容量足够
-	Q[++rear] = T;
-
+	Q[++rear] = T;//将根结点入队
+	/*BiTree p*/
+	while (front < rear)
+		//队不空，则循环
+	{
+		p = Q[++front];//队列元素出队，即正在访问的结点
+		if (p->lchild)
+			Q[++rear] = p->lchild;//左孩子入队.
+		if (p->rchlid)
+			Q[++rear] = p->rchild;//右孩子入队
+		if (front->last)
+		//处理该层次的最右结点
+		{
+			level++;//层次增1
+			last = rear;///last指向下层
+		}
+		return level;
+	}
 }
