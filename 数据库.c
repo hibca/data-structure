@@ -1034,3 +1034,35 @@ Rtag用来标记是右孩子(Rtag=0)还是后继结点（Rtag=1）
 	（2）转换：将分好的子二叉树转换成树
 	（3）调整：将转换好的树的根结点排列成一排
 */
+
+
+
+//求二叉树的叶子结点数
+int sun = 0;
+void CaculateLeafNun(BinaryNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	if (root->lchild == NULL && root->rchild == NULL)
+	{
+		printf("%c\n", root->ch);
+		num++;
+	}
+	CaculateLeafNun(root->lchild);//左子树叶子结点的数目
+	CaculateLeafNun(root->rchild);//右子树叶子结点的数目
+}
+
+//求二叉树高度（深度）
+int Btdopth(B1Tree T)
+{
+	if (!T)
+		return 0;//数空，高度为0
+	int front = -1, rear = -1;
+	int last = 0, level = 0;//last指向当前层的最右结点
+	BiTree Q[Maxsize];
+	//设置队列Q，元素是叉树结点指针，且容量足够
+	Q[++rear] = T;
+
+}
