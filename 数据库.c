@@ -1098,3 +1098,21 @@ bino swap(bino B)
 	}
 	return B;
 }
+
+
+	//设计判断两颗二叉树是否相似的算法
+	public boolean similar(TreeNode t1, TreeNode t2)
+	{
+		//采用递归算法判断两个二叉树是否相似
+		boolean leftS = false, rightS = false;
+		if (t1 == null && t2 == null)//两树皆空
+			return true;
+		else if (t1 == null || t2 == null)//只有一个树为空
+			return false;
+		else
+		{
+			leftS = similar(t1.left, t2.left);
+			rightS = similar(t1.right, t2.right);
+			return leftS && rightS;
+		}
+	}
