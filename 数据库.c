@@ -1064,7 +1064,7 @@ int Btdopth(B1Tree T)
 	BiTree Q[Maxsize];
 	//设置队列Q，元素是叉树结点指针，且容量足够
 	Q[++rear] = T;//将根结点入队
-	/*BiTree p*/
+	/*BiTree p*/ //书上不清楚，此处不知如何写，待确定
 	while (front < rear)
 		//队不空，则循环
 	{
