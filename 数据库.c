@@ -1082,3 +1082,19 @@ int Btdopth(B1Tree T)
 		return level;
 	}
 }
+
+
+//设树B是一棵采用链式结构存储的二叉树，编写吧树B中所有结点的左右子树进行交换的函数
+bino swap(bino B)
+{
+	if (B)
+	{
+		bino t = (bino)malloc(sizeof(binode));
+		t = B->left;
+		B->left = B->right;
+		B->right = t;
+		swap(B->left);
+		swap(B->right);
+	}
+	return B;
+}
