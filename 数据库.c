@@ -1121,7 +1121,7 @@ bino swap(bino B)
 平衡因子:左子树高度减右子树高度
 平衡二叉树：任意结点的平衡因子的绝对值不超过一。
 
-//嗯
+//平衡二叉树的判定
 
 
 void Judge_AVL(Bitree bt,int &balance,int &h)
