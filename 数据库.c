@@ -1118,15 +1118,38 @@ bino swap(bino B)
 	}
 
 
-平衡因子:左子树高度减右子树高度
-平衡二叉树：任意结点的平衡因子的绝对值不超过一。
+//平衡因子:左子树高度减右子树高度
+//平衡二叉树：任意结点的平衡因子的绝对值不超过一。
 
 //平衡二叉树的判定
 
 
-void Judge_AVL(Bitree bt,int &balance,int &h)
-{
-        int bl=0,br=0,hr=0;
-	balance=1:
-	if(bt==NULL;
-}
+	void Judge_AVL(BiTree bt, int& balance, int& h)
+	{
+		int bl = 0, br = 0, hl = 0, hr = 0;
+		if (bt == NULL) {
+			h = 0;
+			balance = 1;
+		}
+		else if (bt->lchild == NULL && bt->rchlid == NULL)
+		{
+			h = 1;
+			blance = 1;
+		}
+		else 
+		{
+			Judge_AVL(bt->lchild, bl, hl);
+			Judge_AVL(bt->rchlid, br, hr);
+			if (hl > hr)
+				h = hl + 1;
+			else
+			{
+				h = hr + 1;
+				if (abs(hl->hr) < 2 && bl == 1 && br == 1)
+					blance = 1;
+				else
+					blance = 0;
+			}
+		}
+
+	}
